@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "803054295861",
+    "firebase_url": "https://traxpense-39003.firebaseio.com",
+    "project_id": "traxpense-39003",
+    "storage_bucket": "traxpense-39003.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:803054295861:android:7720b6235415fc2b9dca7c",
+        "android_client_info": {
+          "package_name": "com.mory.traxpense"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "803054295861-aiot42frav7dt6lqbs8b5vfvb6dn0293.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mory.traxpense",
+            "certificate_hash": "8da1ab5e3b3fb68a1837a84a4a5497171004c71e"
+          }
+        },
+        {
+          "client_id": "803054295861-ubv6h2jagp2a1dgd7c558mg1qhhdqb3k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChkbc5G6mqJCT2TeDcVCAcG9hKFgnYjc0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "803054295861-ubv6h2jagp2a1dgd7c558mg1qhhdqb3k.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "803054295861-tg921fql1ur31tlsokdjmtj40ildh701.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.flutter.flutter.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
