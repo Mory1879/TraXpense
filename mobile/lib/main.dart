@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:io' show Platform;
+import 'dart:developer' as developer;
 
 void main() {
   runApp(MyApp());
@@ -9,25 +12,63 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+      title: 'Flutter layout demo',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('TraXpense'),
+        ),
+        body: Container(
+            margin: const EdgeInsets.all(20.0),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Column(children: <Widget>[
+                    Text(
+                      'Бюджет',
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                  ]),
+                  Column(children: <Widget>[
+                    Text(
+                      'Дней',
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                  ]),
+                  Column(children: <Widget>[
+                    Text(
+                      'На день',
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                  ]),
+                ])),
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
+    // return MaterialApp(
+    //   title: 'Flutter Demo',
+    //   theme: ThemeData(
+    //     // This is the theme of your application.
+    //     //
+    //     // Try running your application with "flutter run". You'll see the
+    //     // application has a blue toolbar. Then, without quitting the app, try
+    //     // changing the primarySwatch below to Colors.green and then invoke
+    //     // "hot reload" (press "r" in the console where you ran "flutter run",
+    //     // or simply save your changes to "hot reload" in a Flutter IDE).
+    //     // Notice that the counter didn't reset back to zero; the application
+    //     // is not restarted.
+    //     primarySwatch: Colors.blue,
+    //     // This makes the visual density adapt to the platform that you run
+    //     // the app on. For desktop platforms, the controls will be smaller and
+    //     // closer together (more dense) than on mobile platforms.
+    //     visualDensity: VisualDensity.adaptivePlatformDensity,
+    //   ),
+    //   home: MyHomePage(title: 'Flutter Demo Home Page'),
+    // );
   }
 }
 
@@ -49,8 +90,60 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+class Budget {
+  int budget;
+  DateTime startDate;
+  DateTime endDate;
+}
+
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+
+  int startDate;
+  int endDate;
+  int budget;
+
+  final databaseReference = Firestore.instance;
+
+  void getBudget() async {
+    await databaseReference
+        .collection("budget")
+        .getDocuments()
+        .then((value) => {
+              value.documents.asMap().forEach((index, data) {
+                developer.log(value.documents[index].toString(),
+                    name: 'my.app.category');
+              })
+              // String meta = value.metadata.toString()
+              // developer.log(,
+              //       name: 'my.app.category');
+              // developer.log(element.data.keys.toString(),
+              //     name: 'my.app.category');
+              // developer.log(element.data.values.toString(),
+              //     name: 'my.app.category');
+              // developer.log(value.toString(),
+              //       name: 'my.app.category');
+            });
+  }
+
+  @override
+  void initState() {
+    String host = Platform.isAndroid ? '10.0.2.2:8080' : 'localhost:8080';
+
+    Firestore.instance.settings(
+      host: host,
+      sslEnabled: false,
+      persistenceEnabled: false,
+    );
+
+    // var document = await Firestore.instance.document('COLLECTION_NAME/TESTID1');
+    // document.get() => then(function(document) {
+    //     print(document("name"));
+    // });
+    getBudget();
+
+    super.initState();
+  }
 
   void _incrementCounter() {
     setState(() {
