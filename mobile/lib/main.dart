@@ -22,9 +22,8 @@ class MyApp extends StatelessWidget {
             title: Text('TraXpense'),
           ),
           body: Container(
-            margin: const EdgeInsets.all(20.0),
             child: Column(
-              children: [Header(), BudgetData()],
+              children: [Header(), BudgetData(), InputContainer()],
             ),
           ),
         ));
@@ -35,6 +34,7 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.all(20.0),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
         Expanded(
           flex: 1,
@@ -125,7 +125,7 @@ class _BudgetDataState extends State<BudgetData> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.only(top: 20.0),
+        margin: const EdgeInsets.only(top: 20.0, bottom: 20.0),
         child: StreamBuilder<QuerySnapshot>(
           stream:
               databaseReference.collection("budget").getDocuments().asStream(),
@@ -171,5 +171,146 @@ class _BudgetDataState extends State<BudgetData> {
                 ]);
           },
         ));
+  }
+}
+
+class InputContainer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+        flex: 2,
+        child: Container(
+          child: Column(
+            children: [InputText(), InputButtons()],
+          ),
+        ));
+  }
+}
+
+class InputText extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+        flex: 1,
+        child: Container(
+          color: Colors.blueAccent,
+        ));
+  }
+}
+
+class InputButtons extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+        flex: 3,
+        child: Container(
+            color: Colors.white,
+            child: Row(children: [
+              Expanded(
+                flex: 3,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                            child: FlatButton(
+                          onPressed: () {},
+                          child: Text("7"),
+                        )),
+                        Expanded(
+                            child: FlatButton(
+                          onPressed: () {},
+                          child: Text("8"),
+                        )),
+                        Expanded(
+                            child: FlatButton(
+                          onPressed: () {},
+                          child: Text("9"),
+                        ))
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                            child: FlatButton(
+                          onPressed: () {},
+                          child: Text("4"),
+                        )),
+                        Expanded(
+                            child: FlatButton(
+                          onPressed: () {},
+                          child: Text("5"),
+                        )),
+                        Expanded(
+                            child: FlatButton(
+                          onPressed: () {},
+                          child: Text("6"),
+                        ))
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                            child: FlatButton(
+                          onPressed: () {},
+                          child: Text("1"),
+                        )),
+                        Expanded(
+                            child: FlatButton(
+                          onPressed: () {},
+                          child: Text("2"),
+                        )),
+                        Expanded(
+                            child: FlatButton(
+                          onPressed: () {},
+                          child: Text("3"),
+                        ))
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                            child: FlatButton(
+                          onPressed: () {},
+                          child: Text("0"),
+                        )),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                  flex: 1,
+                  child: Column(
+                    children: [
+                      Expanded(
+                          flex: 1,
+                          child: FlatButton(
+                            color: Colors.grey,
+                            onPressed: () {},
+                            child: Icon(
+                              Icons.backspace,
+                              color: Colors.white,
+                              size: 24.0,
+                              semanticLabel:
+                                  'Text to announce in accessibility modes',
+                            ),
+                          )),
+                      Expanded(
+                          flex: 3,
+                          child: FlatButton(
+                            color: Colors.orangeAccent,
+                            onPressed: () {},
+                            child: Icon(
+                              Icons.keyboard_return,
+                              size: 24.0,
+                              semanticLabel:
+                                  'Text to announce in accessibility modes',
+                            ),
+                          ))
+                    ],
+                  ))
+            ])));
   }
 }
