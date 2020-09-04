@@ -24,7 +24,10 @@ dependencies:
   flutter:
     sdk: flutter
   
-  firebase_core: 
+  firebase_core:
+    
+  # formatter
+  intl: any
   
   # Database
   cloud_firestore: 
