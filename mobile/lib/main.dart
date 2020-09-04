@@ -190,11 +190,7 @@ class InputContainer extends StatelessWidget {
 class InputText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-        flex: 1,
-        child: Container(
-          color: Colors.blueAccent,
-        ));
+    return Expanded(flex: 1, child: Container());
   }
 }
 
@@ -211,78 +207,142 @@ class InputButtons extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Row(
+                    Expanded(
+                        child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Expanded(
-                            child: FlatButton(
-                          onPressed: () {},
-                          child: Text("7"),
-                        )),
+                            child: ButtonTheme(
+                                height: 100.0,
+                                child: OutlineButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    "7",
+                                    style: TextStyle(fontSize: 35.0),
+                                  ),
+                                ))),
                         Expanded(
-                            child: FlatButton(
-                          onPressed: () {},
-                          child: Text("8"),
-                        )),
+                            child: ButtonTheme(
+                                height: 100.0,
+                                child: OutlineButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    "8",
+                                    style: TextStyle(fontSize: 35.0),
+                                  ),
+                                ))),
                         Expanded(
-                            child: FlatButton(
-                          onPressed: () {},
-                          child: Text("9"),
-                        ))
+                            child: ButtonTheme(
+                                height: 100.0,
+                                child: OutlineButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    "9",
+                                    style: TextStyle(fontSize: 35.0),
+                                  ),
+                                )))
                       ],
-                    ),
-                    Row(
+                    )),
+                    Expanded(
+                        child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Expanded(
-                            child: FlatButton(
-                          onPressed: () {},
-                          child: Text("4"),
-                        )),
+                            child: ButtonTheme(
+                                height: 100.0,
+                                child: OutlineButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    "4",
+                                    style: TextStyle(fontSize: 35.0),
+                                  ),
+                                ))),
                         Expanded(
-                            child: FlatButton(
-                          onPressed: () {},
-                          child: Text("5"),
-                        )),
+                            child: ButtonTheme(
+                                height: 100.0,
+                                child: OutlineButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    "5",
+                                    style: TextStyle(fontSize: 35.0),
+                                  ),
+                                ))),
                         Expanded(
-                            child: FlatButton(
-                          onPressed: () {},
-                          child: Text("6"),
-                        ))
+                            child: ButtonTheme(
+                                height: 100.0,
+                                child: OutlineButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    "6",
+                                    style: TextStyle(fontSize: 35.0),
+                                  ),
+                                )))
                       ],
-                    ),
-                    Row(
+                    )),
+                    Expanded(
+                        child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Expanded(
-                            child: FlatButton(
-                          onPressed: () {},
-                          child: Text("1"),
-                        )),
+                            child: ButtonTheme(
+                                height: 100.0,
+                                child: OutlineButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    "1",
+                                    style: TextStyle(fontSize: 35.0),
+                                  ),
+                                ))),
                         Expanded(
-                            child: FlatButton(
-                          onPressed: () {},
-                          child: Text("2"),
-                        )),
+                            child: ButtonTheme(
+                                height: 100.0,
+                                child: OutlineButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    "2",
+                                    style: TextStyle(fontSize: 35.0),
+                                  ),
+                                ))),
                         Expanded(
-                            child: FlatButton(
-                          onPressed: () {},
-                          child: Text("3"),
-                        ))
+                            child: ButtonTheme(
+                                height: 100.0,
+                                child: OutlineButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    "3",
+                                    style: TextStyle(fontSize: 35.0),
+                                  ),
+                                )))
                       ],
-                    ),
-                    Row(
+                    )),
+                    Expanded(
+                        child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Expanded(
-                            child: FlatButton(
-                          onPressed: () {},
-                          child: Text("0"),
-                        )),
+                            child: ButtonTheme(
+                                height: 100.0,
+                                child: OutlineButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    "0",
+                                    style: TextStyle(fontSize: 35.0),
+                                  ),
+                                ))),
                       ],
-                    ),
+                    )),
                   ],
                 ),
               ),
               Expanded(
                   flex: 1,
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Expanded(
                           flex: 1,
@@ -304,7 +364,7 @@ class InputButtons extends StatelessWidget {
                             onPressed: () {},
                             child: Icon(
                               Icons.keyboard_return,
-                              size: 24.0,
+                              size: 34.0,
                               semanticLabel:
                                   'Text to announce in accessibility modes',
                             ),
