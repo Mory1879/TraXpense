@@ -2,8 +2,8 @@
     "name": "mobile",
     "private": true,
     "scripts": {
-      "mock-firestore:run": "firebase emulators:start --import=.",
-      "mock-firestore:run:with-export": "firebase emulators:start --export-on-exit --import=.",
-      "mock-firestore:save": "firebase emulators:export ."
+      "mock-firebase:run": "firebase emulators:start --import=.",
+      "mock-firebase:run:with-export": "firebase emulators:start --export-on-exit --import=.",
+      "mock-firebase:save": "firebase emulators:export ."
     }
 }
