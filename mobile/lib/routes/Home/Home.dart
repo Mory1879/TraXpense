@@ -2,6 +2,7 @@ import 'dart:io' show Platform;
 
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:TraXpense/entities/Budget.dart';
 
@@ -18,14 +19,21 @@ class _HomeState extends State<Home> {
   Budget currentBudget;
 
   final databaseReference = Firestore.instance;
+  final FirebaseAuth auth = FirebaseAuth.instance;
 
-  void getCurrentBudget() {
-    databaseReference
+  void getCurrentBudget() async {
+    final FirebaseUser user = await auth.currentUser();
+    final uid = user.uid;
+
+    print('user uid: ${uid}');
+
+    await databaseReference
         .collection("budget")
-        .getDocuments()
-        .then((snapshot) => setState(() {
-              currentBudget = Budget.fromMap(snapshot.documents.last.data,
-                  snapshot.documents.last.documentID);
+        .document(uid)
+        .get()
+        .then((document) => setState(() {
+              currentBudget =
+                  Budget.fromMap(document.data, document.documentID);
             }));
   }
 
@@ -44,11 +52,11 @@ class _HomeState extends State<Home> {
   void initState() {
     String host = Platform.isAndroid ? '10.0.2.2:8080' : 'localhost:8080';
 
-    Firestore.instance.settings(
-      host: host,
-      sslEnabled: false,
-      persistenceEnabled: false,
-    );
+    // Firestore.instance.settings(
+    //   host: host,
+    //   sslEnabled: false,
+    //   persistenceEnabled: false,
+    // );
 
     super.initState();
 
