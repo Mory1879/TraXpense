@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:TraXpense/routes/Main/Main.dart';
+import 'package:TraXpense/routes/Home/Home.dart';
 
 class InputButtons extends StatelessWidget {
   final Function addDigit;

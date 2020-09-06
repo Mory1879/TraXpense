@@ -40,4 +40,11 @@ class Budget {
   addSpending(double amount, DateTime date) {
     spendings.add(Spending(amount, date));
   }
+
+  getSpendingsDbObject() {
+    return spendings
+        .toList()
+        .map((e) => {"date": e.date, "amount": e.amount})
+        .toList();
+  }
 }

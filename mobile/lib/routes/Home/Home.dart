@@ -9,12 +9,12 @@ import 'ui/Header.dart';
 import 'ui/InputButtons.dart';
 import 'ui/InputText.dart';
 
-class Main extends StatefulWidget {
+class Home extends StatefulWidget {
   @override
-  _MainState createState() => _MainState();
+  _HomeState createState() => _HomeState();
 }
 
-class _MainState extends State<Main> {
+class _HomeState extends State<Home> {
   Budget currentBudget;
 
   final databaseReference = Firestore.instance;
@@ -33,15 +33,10 @@ class _MainState extends State<Main> {
     currentBudget.addSpending(
         double.parse(amount.replaceAll(new RegExp(r','), '.')), DateTime.now());
 
-    var newSpendings = currentBudget.spendings
-        .toList()
-        .map((e) => {"date": e.date, "amount": e.amount})
-        .toList();
-
     await databaseReference
         .collection("budget")
         .document(currentBudget.budgetID)
-        .setData({"spendings": newSpendings},
+        .setData({"spendings": currentBudget.getSpendingsDbObject()},
             merge: true).then((value) => getCurrentBudget());
   }
 
@@ -68,7 +63,11 @@ class _MainState extends State<Main> {
           leading: IconButton(
             icon: const Icon(Icons.history),
             tooltip: 'Траты',
-            onPressed: () => Navigator.pushNamed(context, '/history'),
+            onPressed: () => Navigator.pushNamed(context, '/history',
+                    arguments: currentBudget)
+                .then((value) => setState(() {
+                      currentBudget = value;
+                    })),
           ),
           actions: <Widget>[
             IconButton(

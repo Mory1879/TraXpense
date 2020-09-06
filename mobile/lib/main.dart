@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:TraXpense/routes/Main/Main.dart';
+import 'package:TraXpense/routes/Home/Home.dart';
 import 'package:TraXpense/routes/History/History.dart';
 import 'package:TraXpense/routes/Settings/Settings.dart';
 
@@ -19,6 +19,6 @@ class MyApp extends StatelessWidget {
           '/history': (context) => History(),
           '/settings': (context) => Settings(),
         },
-        home: Main());
+        home: Home());
   }
 }

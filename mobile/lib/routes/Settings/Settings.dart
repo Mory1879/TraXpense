@@ -6,6 +6,11 @@ class Settings extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Настройки'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          tooltip: 'Назад',
+          onPressed: () => Navigator.pop(context),
+        ),
       ),
       body: const Center(
         child: Text(
