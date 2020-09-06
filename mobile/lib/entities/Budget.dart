@@ -16,12 +16,17 @@ class Budget {
   int get daysLeft => endDate.difference(DateTime.now()).inDays;
   double get leftBudget =>
       amount - spendings.fold(0, (acc, elem) => acc + elem.amount);
+  double get dayBudget => amount / daysLeft;
+  double get todayExpenses => spendings
+      .where((element) => element.date.difference(DateTime.now()).inDays == 0)
+      .fold(0, (acc, elem) => acc + elem.amount);
+
+  bool get isNegativeTodayBudget => (dayBudget - todayExpenses) < 0;
 
   String get daysLeftFormatted => daysLeft.toString();
   String get leftBudgetFormatted => formatCurrency.format(leftBudget);
-  // TODO: rewrite to deduce today spendings from todya budget
   String get leftForTodayFormatted =>
-      formatCurrency.format(leftBudget / daysLeft);
+      formatCurrency.format((dayBudget - todayExpenses));
 
   Budget.fromMap(Map<String, dynamic> data, String budgetID)
       : amount = data["amount"].toDouble(),

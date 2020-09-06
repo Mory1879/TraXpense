@@ -117,7 +117,12 @@ class BudgetData extends StatelessWidget {
             child: Text(
               currentBudget.leftForTodayFormatted,
               textAlign: TextAlign.center,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: currentBudget.isNegativeTodayBudget
+                      ? Colors.red
+                      : Colors.black),
             ),
           )
         ]));
