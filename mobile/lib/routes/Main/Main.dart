@@ -9,12 +9,12 @@ import 'ui/Header.dart';
 import 'ui/InputButtons.dart';
 import 'ui/InputText.dart';
 
-class MainScreen extends StatefulWidget {
+class Main extends StatefulWidget {
   @override
-  _MainScreenState createState() => _MainScreenState();
+  _MainState createState() => _MainState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MainState extends State<Main> {
   Budget currentBudget;
 
   final databaseReference = Firestore.instance;
@@ -62,15 +62,31 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Header(),
-          BudgetData(currentBudget),
-          InputContainer(addSpending)
-        ],
-      ),
-    );
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('TraXpense'),
+          leading: IconButton(
+            icon: const Icon(Icons.history),
+            tooltip: 'Траты',
+            onPressed: () => Navigator.pushNamed(context, '/history'),
+          ),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.settings),
+              tooltip: 'Настройки',
+              onPressed: () => Navigator.pushNamed(context, '/settings'),
+            ),
+          ],
+        ),
+        body: Container(
+          child: Column(
+            children: [
+              Header(),
+              BudgetData(currentBudget),
+              InputContainer(addSpending)
+            ],
+          ),
+        ));
   }
 }
 
@@ -81,7 +97,6 @@ class BudgetData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("current budget: ${currentBudget}");
     if (currentBudget == null) {
       return Container(
           margin: const EdgeInsets.only(top: 20.0, bottom: 20.0),
