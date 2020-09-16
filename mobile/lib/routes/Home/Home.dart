@@ -25,7 +25,7 @@ class _HomeState extends State<Home> {
     final FirebaseUser user = await auth.currentUser();
     final uid = user.uid;
 
-    print('user uid: ${uid}');
+    print('user uid: $uid');
 
     await databaseReference
         .collection("budget")
