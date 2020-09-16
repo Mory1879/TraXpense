@@ -26,7 +26,7 @@ class _SettingsState extends State<Settings> {
 
   void createBudget() async {
     final FirebaseUser user = await auth.currentUser();
-    final uid = user.uid;
+    // final uid = user.uid;
 
     var now = DateTime.now();
     var end = new DateTime(now.year, now.month + 1, now.day);
